@@ -3,6 +3,8 @@
 require_once("includes/classes/FormSanitizer.php");
 require_once("includes/config.php");
 require_once("includes/classes/Account.php");
+require_once("includes/classes/Constants.php");
+
 
 $account = new Account($conn);
 
@@ -15,7 +17,7 @@ $account = new Account($conn);
         $password = FormSanitizer::sanitizeFormPassword($_POST['password']);
         $password2 = FormSanitizer::sanitizeFormPassword2($_POST['password2']);
 
-      
+     $account ->register($firstName,$lastName,$username,$email,$email2,$password,$password2);
         
     }
 
@@ -40,11 +42,11 @@ $account = new Account($conn);
                 </div>
 
                 <form method="POST">
-
+                    <?php echo $account->getError(Constants::$firstNameCharacters); ?>
                     <input type="text" name="firstName" placeholder="First name" required>
-
+                    <?php echo $account->getError(Constants::$lastNameCharacters); ?>
                     <input type="text" name="lastName" placeholder="Last name" required>
-
+                    <?php echo $account->getError(Constants::$userNameCharacters); ?>
                     <input type="text" name="username" placeholder="Username" required>
 
                     <input type="email" name="email" placeholder="Email" required>
