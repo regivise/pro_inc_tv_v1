@@ -61,7 +61,7 @@ class Account
             return;
         }
 
-        $query = $this->con->prepare("SELECT * FROM users WHERE email=:em");
+        $query = $this->conn->prepare("SELECT * FROM users WHERE email=:em");
         $query->bindValue(":em", $em);
 
         $query->execute();
