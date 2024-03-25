@@ -16,6 +16,8 @@ class Account
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
         $this->validateUserName($un);
+        $this->validateEmails($em, $em2);
+        $this->validatePasswords($pw, $pw2);
       
 
     }
